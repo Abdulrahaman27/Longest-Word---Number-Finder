@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling.css">
+    <title>Largest Number Finder</title>
+</head>
+<body>
+    <!-- Include the header -->
+    <div id="header-container"></div>
+
+    <div class="container">
+        <h1>Largest Number Finder</h1>
+        <form id="numberForm">
+            <p>Example : 23
+                5.67
+                100
+                0.45
+                78
+                56.789
+                1024
+                204.5
+                999
+                1.234
+                876.543
+                45
+                19.99
+                389
+                5.6789
+                300
+                4567
+                789.01
+                12
+                650
+                14.35
+                7500
+                88
+                2.718
+                444
+                672
+                180.6
+                920
+                23.45
+                89.01</p>
+            <label for="numbers">Enter a series of numbers (including decimals):</label>
+            <textarea id="numbers" rows="4" required></textarea>
+            <button type="submit">Find Largest Number</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function findLargestNumber(str) {
+            // Regex to match both integers and decimal numbers
+            const numbers = str.match(/\b\d+(\.\d+)?\b/g);
+            if (!numbers) return null; // Return null if no numbers are found
+            const largest = numbers.reduce((max, current) => 
+                parseFloat(current) > parseFloat(max) ? current : max
+            );
+            return {
+                number: largest,
+                length: largest.length
+            };
+        }
+
+        document.getElementById('numberForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const numbers = document.getElementById('numbers').value;
+            const largestNumber = findLargestNumber(numbers);
+            if (largestNumber) {
+                document.getElementById('result').textContent = `The largest number is: "${largestNumber.number}"`;
+            } else {
+                document.getElementById('result').textContent = 'No numbers found in the input. Please enter a series of numbers.';
+            }
+        });
+
+        // Load the header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-container').innerHTML = data);
+    </script>
+</body>
+</html>

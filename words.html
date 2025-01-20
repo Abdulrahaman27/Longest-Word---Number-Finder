@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styling.css" />
+    <title>Longest Word Finder</title>
+  </head>
+  <body>
+   <div id="header-container"></div>
+    <div class="container">
+      <h1>Longest Word Finder</h1>
+      <form id="wordForm">
+        <p>Example: The longest word in the english dictionary is Pneumonoultramicroscopicsilicovolcanoconiosis.</p>
+        <label for="sentence">Enter a sentence:</label>
+        <textarea id="sentence" rows="4" required></textarea>
+        <button type="submit">Find Longest Word</button>
+      </form>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function findLongestWord(str) {
+        const words = str.match(/\b\w+\b/g);
+        if (!words) return "not found❌";
+        const longest = words.reduce((longest, current) =>
+          current.length > longest.length ? current : longest
+        );
+        return {
+          word: longest,
+          length: longest.length,
+        };
+      }
+
+      document
+        .getElementById("wordForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const sentence = document.getElementById("sentence").value;
+          const longestWord = findLongestWord(sentence);
+          document.getElementById(
+            "result"
+          ).textContent = `The longest word is: "${longestWord.word}" and it contains ${longestWord.length} characters`;
+        });
+
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => document.getElementById('header-container').innerHTML = data);
+    </script>
+  </body>
+</html>
