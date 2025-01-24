@@ -64,7 +64,10 @@ To run this tool locally:
 
 ### Input:  
 ```  
-The quick brown fox jumps over 45 lazy dogs. 123 is a bigger number than 99.  
+The quick brown fox jumps over 45 lazy dogs.
+
+
+123 20 116 27 56 78 34 99.  
 ```  
 
 ### Output:  
@@ -102,8 +105,8 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## Contact
 
 Have any questions or suggestions? Feel free to reach out!  
-- **Email**: your-email@example.com  
-- **GitHub**: [your-username](https://github.com/your-username)  
+- **Email**: abdulrahamanabbas27@gmail.com 
+- **GitHub**: [Abdulrahaman27](https://github.com/Abdulrahaman27)  
 
 ---
 
